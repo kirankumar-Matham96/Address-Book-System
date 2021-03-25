@@ -326,5 +326,14 @@ public class AddressBookProgram
                 System.out.println("Thank you!");
         }
         System.out.println("Contact: "+abms.getContact());
+	System.out.println("Do yopu want to delete the last list entered?: Y/N");
+	sc = new Scanner(System.in);
+	String delete = sc.nextLine().toUpperCase();
+	if("Y".equals(delete))
+	{
+		membersList.remove(varun);
+		System.out.println("Contact: "+abms.getContact());
+		System.out.println("Last contact deleted from the Address Book!");
+	}
     }
 }
