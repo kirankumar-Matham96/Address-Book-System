@@ -12,7 +12,7 @@ class Contact
     private int zip;
     private long phoneNumber;
     private String email;
-
+    
     //initializing global variables
     public Contact(String f_name, String l_name, String address, String city, String state, int zip, long phoneNumber, String email)
     {
@@ -121,19 +121,19 @@ class AddressBookMembers
     /**
      * members = list of members
      */
-
+    
     //assigning members to the list
     public AddressBookMembers(List<Contact> members)
     {
         this.members = members;
     }
-
+    
     //Returns the list of members
     public List<Contact> getContact()
     {
         return members;
     }
-
+    
     //Adds a new member to the members list
     public void setMember(List<Contact> member)
     {
@@ -146,13 +146,36 @@ public class AddressBookProgram
     public static void main(String[] args)
     {
         //Entering the details manually
-        Contact kiran = new Contact("Kiran", "Matham", "H.No: 1-4-5/2, Near post office, Ramapure.", "Hyderabad", "Telangana", 589267, 9865895652L, "email1@yahoo.com");
-
-        List<Contact> membersList = new ArrayList<>();
-        membersList.add(kiran);
-
-        AddressBookMembers abms = new AddressBookMembers(membersList);
-
-        System.out.println("Contact: "+abms.getContact());
+//        Contact kiran = new Contact("Kiran", "Matham", "H.No: 1-4-5/2, Near post office, Ramapure.", "Hyderabad", "Telangana", 589267, 9865895652L, "email1@yahoo.com");
+        
+        //Taking the details from user
+        Scanner sc = new Scanner(System.in);
+        
+        System.out.println("Enter member's first name: ");
+        String firstName = sc.nextLine();
+        System.out.println("Enter member's last name: ");
+        String lastName = sc.nextLine();
+        System.out.println("Enter email: ");
+        String email = sc.nextLine();
+        System.out.println("Enter member's address: ");
+        String address = sc.nextLine();
+        System.out.println("Enter city: ");
+        String city = sc.nextLine();
+        System.out.println("Enter state: ");
+        String state = sc.nextLine();
+        System.out.println("Enter zip: ");
+        int zip = sc.nextInt();
+        System.out.println("Enter phone number: ");
+        long phoneNumber = sc.nextLong();
+        
+        Contact kiran = new Contact(firstName, lastName, address, city, state, zip, phoneNumber, email);
+            
+          List<Contact> membersList = new ArrayList<>();
+          membersList.add(kiran);
+          
+          AddressBookMembers abms = new AddressBookMembers(membersList);
+          
+          System.out.println("Contact: "+abms.getContact());
     }
+    
 }
