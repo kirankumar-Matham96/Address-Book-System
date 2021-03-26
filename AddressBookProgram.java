@@ -263,6 +263,13 @@ public class AddressBookProgram
         //Adding member to the contact list
         membersList.add(kiran);
 
+	 //Passing the contacts list to the address book
+        abms = new AddressBookMembers(membersList);
+
+        //printing the contact details from Contacts list
+        System.out.println("Contact: "+abms.getContact());
+
+
         //Taking the details from user
         sc = new Scanner(System.in);
 
@@ -286,14 +293,8 @@ public class AddressBookProgram
         //Passing variables/details to the Contact-class
         varun = new Contact(firstName, lastName, address, city, state, zip, phoneNumber, email);
 
-        //Creating a list for the contacts
-        membersList = new ArrayList<>();
-
         //Adding member to the contact list
         membersList.add(varun);
-
-        //Passing the contacts list to the address book
-        abms = new AddressBookMembers(membersList);
 
         //printing the contact details from Contacts list
         System.out.println("Contact: "+abms.getContact());
@@ -325,15 +326,33 @@ public class AddressBookProgram
             default:
                 System.out.println("Thank you!");
         }
-        System.out.println("Contact: "+abms.getContact());
+
+	System.out.println("Contact: "+abms.getContact());
+
 	System.out.println("Do yopu want to delete the last list entered?: Y/N");
 	sc = new Scanner(System.in);
 	String delete = sc.nextLine().toUpperCase();
 	if("Y".equals(delete))
 	{
-		membersList.remove(varun);
+		System.out.println("Which persons details do you want to delete?"+"\n"+" 1. person_1"+"\n"+" 2. person_2");
+                System.out.println("Enter the number: ");
+                switch(sc.nextInt())
+                {
+                    case 1:
+                        //updating person_1
+                        object = kiran; //passing reference to a reference
+               		membersList.remove(object);
+                        break;
+                    case 2:
+                        //Updating person_2
+                        object = varun; //passing reference to a reference
+             		membersList.remove(object);
+                        break;
+                    default:
+                        System.out.println("Sorry! this program is for two persons only!");
+                }
+        }
 		System.out.println("Contact: "+abms.getContact());
-		System.out.println("Last contact deleted from the Address Book!");
-	}
+		System.out.println("contact deleted from the Address Book!");
     }
 }
